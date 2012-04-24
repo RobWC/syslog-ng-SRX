@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<patterndb version='3' pub_date='2012-04-23'>
+  <ruleset name='rt-flow-stream-structured-logs' id="22074e9e8edfb4b2eb3da9f0179fcd24">
+    <description>
+      This ruleset is handling SME-SRX stream security logs from Junos 12.1
+    </description>
+    <pattern>RT_FLOW</pattern>
+    <rules>
+			<rule id='' class='session_close' provider='robwc'>
+        <!-- -->
+        <patterns>
+          <pattern>- @ESTRING:JUNOS.LOGTYPE: @ @ANYSTRING@</pattern>
+        </patterns>
+        <examples>
+          <example>
+            <test_message program="rt_flow_session_close">- RT_FLOW_SESSION_CLOSE [junos@2636.1.1.1.2.41 reason=&quot;TCP FIN&quot; source-address=&quot;50.76.52.161&quot; source-port=&quot;50940&quot; destination-address=&quot;50.76.52.163&quot; destination-port=&quot;22&quot; service-name=&quot;junos-ssh&quot; nat-source-address=&quot;50.76.52.161&quot; nat-source-port=&quot;50940&quot; nat-destination-address=&quot;10.0.2.100&quot; nat-destination-port=&quot;22&quot; src-nat-rule-name=&quot;None&quot; dst-nat-rule-name=&quot;1&quot; protocol-id=&quot;6&quot; policy-name=&quot;2&quot; source-zone-name=&quot;Untrust&quot; destination-zone-name=&quot;Trust&quot; session-id-32=&quot;1292&quot; packets-from-client=&quot;33&quot; bytes-from-client=&quot;4677&quot; packets-from-server=&quot;27&quot; bytes-from-server=&quot;4763&quot; elapsed-time=&quot;4&quot; application=&quot;UNKNOWN&quot; nested-application=&quot;UNKNOWN&quot; username=&quot;N/A&quot; roles=&quot;N/A&quot; packet-incoming-interface=&quot;fe-0/0/0.0&quot; encrypted=&quot;No &quot;]</test_message>
+            <test_values>
+              <test_value name="JUNOS.LOGTYPE">RT_FLOW_SESSION_CLOSE</test_value>
+           </test_values>
+          </example>
+        </examples>
+      <tags>
+        <tag>firewall</tag>
+      </tags>
+      </rule>
+    </rules>
+  </ruleset>
+</patterndb>
